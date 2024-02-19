@@ -1,0 +1,21 @@
+version: '3.4'
+
+services:
+  marketplace:
+    image: ${DOCKER_REGISTRY-}marketplace
+    build:
+      context: .
+      dockerfile: Marketplace/Dockerfile
+    ports:
+      - "5000:8080"
+    depends_on:
+      - postgresdb
+
+  postgresdb:
+    image: postgres:latest
+    environment:
+      POSTGRES_DB: Marketplace
+      POSTGRES_USER: moviesystemuser
+      POSTGRES_PASSWORD: yourpassword
+    ports:
+      - "5433:5432"

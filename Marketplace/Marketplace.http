@@ -1,0 +1,77 @@
+### Create User
+POST http://localhost:5000/users/1
+Content-Type: application/json
+
+### Get Order by OrderId - Success Scenario
+GET http://localhost:5000/orders/1
+Accept: application/json
+
+### Get Order by OrderId - Not Found Scenario
+GET http://localhost:5000/orders/999
+Accept: application/json
+
+### Create Order - Success Scenario
+POST http://localhost:5000/orders
+Content-Type: application/json
+Accept: application/json
+
+{
+  "userId": 1,
+  "items": [
+    {
+      "itemId": 1,
+      "quantity": 2
+    },
+    {
+      "itemId": 2,
+      "quantity": 3
+    }
+  ]
+}
+
+### Create Order - User Not Found Scenario
+POST http://localhost:5000/orders
+Content-Type: application/json
+Accept: application/json
+
+{
+  "userId": 999,
+  "items": [
+    {
+      "itemId": 1,
+      "quantity": 2
+    }
+  ]
+}
+
+### Get Orders by UserId - Success Scenario
+GET http://localhost:5000/orders/user/1
+Accept: application/json
+
+### Get Orders by UserId - Not Found Scenario
+GET http://localhost:5000/orders/user/999
+Accept: application/json
+
+### Delete Order - Success Scenario
+DELETE http://localhost:5000/orders/1
+Accept: application/json
+
+### Delete Order - Not Found Scenario
+DELETE http://localhost:5000/orders/999
+Accept: application/json
+
+### Mark Order As Paid - Success Scenario
+POST http://localhost:5000/orders/1/pay
+Accept: application/json
+
+### Mark Order As Paid - Not Found Scenario
+POST http://localhost:5000/orders/999/pay
+Accept: application/json
+
+### Mark Order As Completed - Success Scenario
+POST http://localhost:5000/orders/1/complete
+Accept: application/json
+
+### Mark Order As Completed - Not Found Scenario
+POST http://localhost:5000/orders/999/complete
+Accept: application/json
