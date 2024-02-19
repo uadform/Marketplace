@@ -20,7 +20,7 @@ namespace Marketplace.Controllers
         public async Task<IActionResult> CreateOrder(CreateOrderDto createOrderDto)
         {
             var orderDto = await _orderService.CreateOrderAsync(createOrderDto);
-            return CreatedAtAction(nameof(GetOrder), new { orderId = orderDto.OrderId }, orderDto);
+            return Created();
         }
 
         [HttpGet("{id}")]
